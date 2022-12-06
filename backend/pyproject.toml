@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Vlad Antropov <vladanter0@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+uvicorn = "^0.20.0"
+fastapi = "^0.88.0"
+python-jose = { extras = ["cryptography"], version = "^3.3.0" }
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
+aerich = "^0.7.1"
+tortoise-orm = {extras = ["asyncpg"], version = "^0.19.2"}
+pydentic = {extras = ["dotenv"], version = "^0.0.1.dev3"}
+python-multipart = "^0.0.5"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
+
+[tool.aerich]
+tortoise_orm = "source.database.config.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

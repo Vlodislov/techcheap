@@ -1,0 +1,2 @@
+initDB:
+	aerich init-db
