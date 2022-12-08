@@ -18,11 +18,11 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 class OAuth2PasswordBearerCookie(OAuth2):
     def __init__(
-            self,
-            token: str,
-            scheme_name: str = None,
-            scopes: dict = None,
-            auto_error: bool = None,
+        self,
+        token: str,
+        scheme_name: str = None,
+        scopes: dict = None,
+        auto_error: bool = None,
     ):
         if not scopes:
             scopes = {}

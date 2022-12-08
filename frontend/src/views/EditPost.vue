@@ -26,7 +26,7 @@
             class="form-control"
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-outline-primary">Submit</button>
+      <button type="submit" class="btn btn-outline-primary">Edit</button>
     </form>
   </section>
 </template>

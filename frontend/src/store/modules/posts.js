@@ -25,7 +25,6 @@ const actions = {
     },
     // eslint-disable-next-line no-empty-pattern
     async updatePost({}, post) {
-        console.log(post.form);
         await axios.post(`post/${post.id}`, post.form);
     },
     // eslint-disable-next-line no-empty-pattern

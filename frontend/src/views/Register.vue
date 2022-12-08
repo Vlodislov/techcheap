@@ -19,7 +19,7 @@
         <label for="password" class="form-label">Password:</label>
         <input type="password" name="password" v-model="user.password" class="form-control"/>
       </div>
-      <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+      <button type="submit" class="btn btn-outline-primary">Register</button>
       <p class="transition-login">
         <span>Already registered? </span>
         <span><a href="/login">Log in</a></span>

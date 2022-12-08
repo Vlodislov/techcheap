@@ -54,7 +54,8 @@ const routes = [
         component: EditPost,
         meta: {requiresAuth: true},
         props: true,
-    }
+    },
+
 ]
 
 const router = new VueRouter({

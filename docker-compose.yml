@@ -4,29 +4,35 @@ services:
 
   backend:
     build:
-      dockerfile: ./backend/DockerFile
-      context: .
+      dockerfile: DockerFile
+      context: ./backend/
     env_file:
-      - ".env.docker"
+      - "./backend/.env.docker"
     ports:
       - "5000:5000"
-    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 5000
     depends_on:
       - db
 
   frontend:
-    build: ./frontend
+    build:
+      dockerfile: DockerFile
+      context: ./frontend
     volumes:
       - './frontend:/app'
       - '/app/node_modules'
     ports:
       - "8080:8080"
-    depends_on:
-      - backend
+
   db:
     image: postgres
     env_file:
-      - ".env.docker"
+      - "./backend/.env.docker"
     ports:
-      - "6789:5432"
-    container_name: "db_FastAPI"
+      - "6689:5432"
+    container_name: "db_FastAPI_techcheap"
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"

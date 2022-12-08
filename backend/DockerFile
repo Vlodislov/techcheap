@@ -11,5 +11,6 @@ FROM base
 
 COPY pyproject.toml ./
 RUN poetry install
+RUN pip install pydantic[dotenv]
 
 COPY main.py ./  ./

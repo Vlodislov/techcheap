@@ -88,7 +88,12 @@ export default {
   methods: {
     ...mapActions(['createPost']),
     async submit() {
-      await this.createPost(this.form);
+      if(this.form.content != '') {
+        await this.createPost(this.form);
+        this.form.title = '';
+        this.form.content = '';
+        this.form.description = '';
+      }
     },
   },
 };

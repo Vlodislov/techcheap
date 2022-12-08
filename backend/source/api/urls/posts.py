@@ -18,8 +18,8 @@ async def get_posts():
     return await handle_get_all_posts()
 
 
-@router.get("/post/{post_id}", )
-async def get_note(post_id: int) -> PostResponse:
+@router.get("/post/{post_id}")
+async def get_post(post_id: int) -> PostResponse:
     try:
         return await handle_get_post(post_id)
     except DoesNotExist:

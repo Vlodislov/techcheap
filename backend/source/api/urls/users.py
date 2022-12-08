@@ -9,7 +9,11 @@ from source.api.handlers.users.delete_user import handle_delete_user
 from source.schemas.response.token import StatusResponse
 from source.schemas.users import UserCreatePayload, UserResponse
 from source.services.auth.user import validate_user
-from source.services.utils.jwt import get_login_user, handle_create_access_toke, ACCESS_TOKEN_EXPIRE_MINUTES
+from source.services.utils.jwt import (
+    get_login_user,
+    handle_create_access_toke,
+    ACCESS_TOKEN_EXPIRE_MINUTES,
+)
 
 router = APIRouter()
 
@@ -23,10 +27,11 @@ async def create_user(user: UserCreatePayload) -> UserResponse:
 async def login(user: OAuth2PasswordRequestForm = Depends()):
     user = await validate_user(user)
     if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
-                            detail="Incorrect login or password",
-                            headers={"WWW-Authenticate": "Bearer"},
-                            )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect login or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = handle_create_access_toke(
@@ -54,6 +59,6 @@ async def read_users_me(current_user: UserResponse = Depends(get_login_user)):
 
 @router.delete("/user/{user_id}")
 async def delete_user(
-        user_id: int, current_user: UserResponse = Depends(get_login_user)
+    user_id: int, current_user: UserResponse = Depends(get_login_user)
 ) -> StatusResponse:
     return await handle_delete_user(user_id, current_user)
